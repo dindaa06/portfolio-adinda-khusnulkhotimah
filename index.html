@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adinda Khusnul Khotimah - Portfolio</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Fonts: Plus Jakarta Sans & Bricolage Grotesque -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        heading: ['"Bricolage Grotesque"', 'sans-serif'],
+                    },
+                    colors: {
+                        rosebrand: {
+                            50: '#fff1f4',
+                            100: '#ffe4e8',
+                            200: '#fecdd6',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                            950: '#4c0519',
+                        }
+                    },
+                    animation: {
+                        'float-slow': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 0.4 },
+                            '50%': { opacity: 0.8 },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .font-heading {
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+
+        /* Glassmorphism utility - Fixed contrast for light and dark modes */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 10px 30px -10px rgba(225, 29, 72, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+        }
+        
+        .dark .glass-card {
+            background: rgba(26, 15, 28, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Spotlight hover effect */
+        .spotlight-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(254, 205, 214, 0.35), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .spotlight-card:hover::before {
+            left: 100%;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f43f5e;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 dark:bg-[#100912] text-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300 selection:bg-rosebrand-500 selection:text-white">
+
+    <!-- Glowing Background Decorative Blobs -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-rosebrand-300/40 dark:bg-rosebrand-900/20 rounded-full filter blur-[120px] pointer-events-none animate-pulse-glow"></div>
+    <div class="fixed bottom-10 right-10 w-96 h-96 bg-purple-300/30 dark:bg-purple-950/20 rounded-full filter blur-[140px] pointer-events-none animate-pulse-glow" style="animation-delay: 1.5s;"></div>
+
+    <!-- Toast Notification for Email Copy -->
+    <div id="copyToast" class="fixed bottom-6 right-6 z-50 hidden transition-all duration-300">
+        <div class="glass-card px-5 py-3.5 rounded-2xl border border-rosebrand-300 dark:border-rosebrand-800 shadow-xl flex items-center gap-3 text-sm font-semibold text-rosebrand-800 dark:text-rosebrand-300">
+            <i data-feather="check-circle" class="w-5 h-5 text-rosebrand-600"></i>
+            <span data-i18n="toast.copy">Alamat Email telah disalin!</span>
+        </div>
+    </div>
+
+    <!-- MAIN PORTFOLIO CONTENT WRAPPER -->
+    <div id="mainPortfolioView">
+        <!-- HEADER / NAVIGATION -->
+        <header class="fixed top-0 left-0 right-0 z-40 bg-white/90 dark:bg-[#100912]/80 backdrop-blur-md border-b border-rosebrand-200/80 dark:border-rosebrand-950/60 shadow-sm dark:shadow-none transition-all">
+            <div class="max-w-6xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+                
+                <!-- Brand Logo -->
+                <a href="#summary" class="font-heading text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white group">
+                    Adinda<span class="text-rosebrand-600 dark:text-rosebrand-400 group-hover:underline">.dev</span>
+                </a>
+
+                <!-- Desktop Nav Menu -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-xs lg:text-sm font-bold text-slate-700 dark:text-slate-300">
+                    <a href="#summary" data-i18n="nav.about" class="px-2.5 py-2 rounded-xl hover:text-rosebrand-600 dark:hover:text-rosebrand-400 hover:bg-rosebrand-100/70 dark:hover:bg-slate-900 transition-colors">Tentang</a>
+                    <a href="#skills" data-i18n="nav.skills" class="px-2.5 py-2 rounded-xl hover:text-rosebrand-600 dark:hover:text-rosebrand-400 hover:bg-rosebrand-100/70 dark:hover:bg-slate-900 transition-colors">Keahlian</a>
+                    <a href="#experience" data-i18n="nav.experience" class="px-2.5 py-2 rounded-xl hover:text-rosebrand-600 dark:hover:text-rosebrand-400 hover:bg-rosebrand-100/70 dark:hover:bg-slate-900 transition-colors">Pengalaman</a>
+                    <a href="#awards" data-i18n="nav.awards" class="px-2.5 py-2 rounded-xl hover:text-rosebrand-600 dark:hover:text-rosebrand-400 hover:bg-rosebrand-100/70 dark:hover:bg-slate-900 transition-colors">Prestasi</a>
+                    <a href="#organization" data-i18n="nav.organization" class="px-2.5 py-2 rounded-xl hover:text-rosebrand-600 dark:hover:text-rosebrand-400 hover:bg-rosebrand-100/70 dark:hover:bg-slate-900 transition-colors">Organisasi</a>
+                    <a href="#education" data-i18n="nav.education" class="px-2.5 py-2 rounded-xl hover:text-rosebrand-600 dark:hover:text-rosebrand-400 hover:bg-rosebrand-100/70 dark:hover:bg-slate-900 transition-colors">Pendidikan</a>
+                    <a href="#certifications" data-i18n="nav.certifications" class="px-2.5 py-2 rounded-xl hover:text-rosebrand-600 dark:hover:text-rosebrand-400 hover:bg-rosebrand-100/70 dark:hover:bg-slate-900 transition-colors">Sertifikasi (39)</a>
+                    <a href="#projects" data-i18n="nav.projects" class="px-2.5 py-2 rounded-xl hover:text-rosebrand-600 dark:hover:text-rosebrand-400 hover:bg-rosebrand-100/70 dark:hover:bg-slate-900 transition-colors">Proyek</a>
+                    <a href="#contact" data-i18n="nav.contact" class="px-2.5 py-2 rounded-xl hover:text-rosebrand-600 dark:hover:text-rosebrand-400 hover:bg-rosebrand-100/70 dark:hover:bg-slate-900 transition-colors">Kontak</a>
+                </nav>
+
+                <!-- Theme & Language Toggles & Mobile Menu -->
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <button id="langToggle" aria-label="Toggle Language" class="px-3 py-2 rounded-2xl bg-rosebrand-100/80 dark:bg-slate-900 text-rosebrand-700 dark:text-rosebrand-400 hover:bg-rosebrand-200 dark:hover:bg-slate-800 transition-all border border-rosebrand-300/80 dark:border-rosebrand-900/60 shadow-sm text-xs font-bold flex items-center gap-1.5">
+                        <i data-feather="globe" class="w-3.5 h-3.5"></i>
+                        <span id="langText">ID</span>
+                    </button>
+
+                    <button id="themeToggle" aria-label="Toggle Theme" class="p-2.5 rounded-2xl bg-rosebrand-100/80 dark:bg-slate-900 text-rosebrand-700 dark:text-rosebrand-400 hover:bg-rosebrand-200 dark:hover:bg-slate-800 transition-all border border-rosebrand-300/80 dark:border-rosebrand-900/60 shadow-sm">
+                        <i data-feather="sun" class="hidden dark:block w-4 h-4"></i>
+                        <i data-feather="moon" class="block dark:hidden w-4 h-4"></i>
+                    </button>
+
+                    <button id="mobileMenuBtn" aria-label="Open Navigation" class="md:hidden p-2.5 rounded-2xl bg-rosebrand-100/80 dark:bg-slate-900 text-slate-800 dark:text-slate-300 hover:bg-rosebrand-200 dark:hover:bg-slate-800 border border-rosebrand-300/80 dark:border-slate-800">
+                        <i data-feather="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Drawer -->
+            <div id="mobileMenu" class="hidden md:hidden border-b border-rosebrand-200 dark:border-rosebrand-950 bg-white/95 dark:bg-[#100912]/95 px-6 pt-3 pb-6 space-y-2 shadow-2xl">
+                <a href="#summary" data-i18n="nav.about" class="mobile-link block px-4 py-2.5 rounded-xl hover:bg-rosebrand-100 dark:hover:bg-slate-900 font-bold text-slate-800 dark:text-slate-200">Tentang</a>
+                <a href="#skills" data-i18n="nav.skills" class="mobile-link block px-4 py-2.5 rounded-xl hover:bg-rosebrand-100 dark:hover:bg-slate-900 font-bold text-slate-800 dark:text-slate-200">Keahlian</a>
+                <a href="#experience" data-i18n="nav.experience" class="mobile-link block px-4 py-2.5 rounded-xl hover:bg-rosebrand-100 dark:hover:bg-slate-900 font-bold text-slate-800 dark:text-slate-200">Pengalaman</a>
+                <a href="#awards" data-i18n="nav.awards" class="mobile-link block px-4 py-2.5 rounded-xl hover:bg-rosebrand-100 dark:hover:bg-slate-900 font-bold text-slate-800 dark:text-slate-200">Prestasi</a>
+                <a href="#organization" data-i18n="nav.organization" class="mobile-link block px-4 py-2.5 rounded-xl hover:bg-rosebrand-100 dark:hover:bg-slate-900 font-bold text-slate-800 dark:text-slate-200">Organisasi</a>
+                <a href="#education" data-i18n="nav.education" class="mobile-link block px-4 py-2.5 rounded-xl hover:bg-rosebrand-100 dark:hover:bg-slate-900 font-bold text-slate-800 dark:text-slate-200">Pendidikan</a>
+                <a href="#certifications" data-i18n="nav.certifications" class="mobile-link block px-4 py-2.5 rounded-xl hover:bg-rosebrand-100 dark:hover:bg-slate-900 font-bold text-slate-800 dark:text-slate-200">Sertifikasi & Pelatihan</a>
+                <a href="#projects" data-i18n="nav.projects" class="mobile-link block px-4 py-2.5 rounded-xl hover:bg-rosebrand-100 dark:hover:bg-slate-900 font-bold text-slate-800 dark:text-slate-200">Proyek</a>
+                <a href="#contact" data-i18n="nav.contact" class="mobile-link block px-4 py-2.5 rounded-xl hover:bg-rosebrand-100 dark:hover:bg-slate-900 font-bold text-slate-800 dark:text-slate-200">Kontak</a>
+            </div>
+        </header>
+
+        <main class="max-w-6xl mx-auto px-5 sm:px-8 pt-28 pb-20 space-y-32 relative z-10">
+
+            <!-- 1. SUMMARY / HERO SECTION -->
+            <section id="summary" class="pt-8 md:pt-16 flex flex-col-reverse md:flex-row items-center justify-between gap-12 lg:gap-16">
+                <div class="flex-1 space-y-6 text-center md:text-left">
+                    
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.12] text-slate-950 dark:text-white font-heading" data-i18n="hero.title">
+                        Membangun aplikasi web & cloud <span class="text-rosebrand-600 dark:text-rosebrand-400">handal & modern.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-700 dark:text-slate-300 max-w-xl leading-relaxed font-medium" data-i18n="hero.description">
+                        Halo! Saya <strong class="text-slate-950 dark:text-white font-bold">Adinda Khusnul Khotimah</strong>, Lulusan Sarjana Terapan Teknik Informatika & Komputer (PNUP). Berpengalaman dalam pengembangan aplikasi web dinamis menggunakan React, TypeScript, Directus CMS, integrasi RESTful API, serta fondasi Cloud Computing (GCP).
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+                        <a href="#projects" data-i18n="hero.ctaPrimary" class="spotlight-card px-7 py-4 rounded-2xl bg-rosebrand-600 hover:bg-rosebrand-700 text-white font-bold text-sm shadow-lg shadow-rosebrand-600/20 hover:-translate-y-0.5 transition-all">
+                            Eksplorasi Karya Saya
+                        </a>
+                        <a href="#contact" data-i18n="hero.ctaSecondary" class="px-7 py-4 rounded-2xl border border-rosebrand-300 dark:border-slate-800 bg-white/90 dark:bg-slate-900/60 text-slate-900 dark:text-slate-200 font-bold text-sm hover:bg-rosebrand-100/60 dark:hover:bg-slate-800 hover:-translate-y-0.5 transition-all shadow-sm">
+                            Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Profile Avatar -->
+                <div class="relative flex-shrink-0 animate-float-slow">
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-[2.5rem] bg-rosebrand-600 p-2 shadow-xl shadow-rosebrand-500/10 rotate-2">
+                        <img src="photo.jpeg" alt="Adinda Khusnul Khotimah Profile" class="w-full h-full object-cover rounded-[2.1rem] bg-slate-900">
+                    </div>
+                    <div class="absolute -bottom-4 -left-4 px-4 py-3 rounded-2xl glass-card shadow-lg flex items-center gap-3 border border-rosebrand-200 dark:border-slate-700">
+                        <div class="w-10 h-10 rounded-xl bg-rosebrand-600 text-white flex items-center justify-center font-bold font-heading">
+                            3.79
+                        </div>
+                        <div class="text-xs">
+                            <p class="font-bold text-slate-950 dark:text-white" data-i18n="hero.expYears">IPK / GPA</p>
+                            <p class="text-slate-600 dark:text-slate-400 font-semibold">Informatics Graduate (PNUP)</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. SKILLS SECTION -->
+            <section id="skills" class="space-y-10">
+                <div class="text-center md:text-left space-y-3">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-rosebrand-600 dark:text-rosebrand-400" data-i18n="skills.tag">Spesialisasi</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-heading text-slate-950 dark:text-white" data-i18n="skills.title">Keahlian & Technical Stack</h2>
+                    <p class="text-slate-700 dark:text-slate-400 max-w-xl text-sm sm:text-base font-medium" data-i18n="skills.subtitle">Teknologi, bahasa pemrograman, dan alat pengembangan yang dikuasai berdasarkan pengalaman proyek nyata.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Frontend Card -->
+                    <div class="glass-card p-7 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 hover:border-rosebrand-400 dark:hover:border-rosebrand-800 transition-all group">
+                        <div class="w-12 h-12 rounded-2xl bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-600 dark:text-rosebrand-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i data-feather="layout" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 font-heading text-slate-950 dark:text-white">Frontend & Mobile</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mb-6 font-medium" data-i18n="skills.feDesc">Membangun antarmuka web dinamis dan aplikasi mobile yang responsif.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">React</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">TypeScript</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">JavaScript</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">Kotlin (Mobile)</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">HTML5 / CSS3</span>
+                        </div>
+                    </div>
+
+                    <!-- Backend Card -->
+                    <div class="glass-card p-7 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 hover:border-rosebrand-400 dark:hover:border-rosebrand-800 transition-all group">
+                        <div class="w-12 h-12 rounded-2xl bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-600 dark:text-rosebrand-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i data-feather="server" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 font-heading text-slate-950 dark:text-white">Backend, CMS & API</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mb-6 font-medium" data-i18n="skills.beDesc">Arsitektur decoupled, konsumsi RESTful API, dan headless CMS.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">Directus CMS</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">RESTful APIs</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">PHP & Laravel</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">Python</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">Node.js</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">MySQL / PostgreSQL</span>
+                        </div>
+                    </div>
+
+                    <!-- Cloud & Tools Card -->
+                    <div class="glass-card p-7 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 hover:border-rosebrand-400 dark:hover:border-rosebrand-800 transition-all group">
+                        <div class="w-12 h-12 rounded-2xl bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-600 dark:text-rosebrand-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i data-feather="cloud" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 font-heading text-slate-950 dark:text-white">Cloud & Infrastructure</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mb-6 font-medium" data-i18n="skills.devopsDesc">Deployment cloud, manajemen server, dan alur kerja berbasis Git.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">Google Cloud (GCP)</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">Cloud Run & Storage</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">Git & GitHub</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">Docker</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm">Nginx</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. WORK EXPERIENCE & TRAINING SECTION -->
+            <section id="experience" class="space-y-10">
+                <div class="text-center md:text-left space-y-3">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-rosebrand-600 dark:text-rosebrand-400" data-i18n="exp.tag">Pengalaman Lapangan</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-heading text-slate-950 dark:text-white" data-i18n="exp.title">Pengalaman Kerja & Program Pelatihan</h2>
+                </div>
+
+                <div class="relative border-l-2 border-rosebrand-300 dark:border-rosebrand-950 ml-4 md:ml-6 space-y-10">
+                    
+                    <!-- Item 1: DIGDAYA X Hackathon -->
+                    <div class="relative pl-8 md:pl-10 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-rosebrand-600 border-4 border-white dark:border-[#100912] group-hover:scale-125 transition-transform"></div>
+                        <div class="glass-card p-7 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-950 dark:text-white font-heading">DIGDAYA X Hackathon Participant</h3>
+                                    <p class="text-sm font-bold text-rosebrand-700 dark:text-rosebrand-400">Pusat Inovasi Digital Indonesia (Bank Indonesia & OJK)</p>
+                                </div>
+                                <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-xs font-extrabold">Jun 2026 - Ags 2026</span>
+                            </div>
+                            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium" data-i18n="exp.job0Desc">
+                                Mengikuti pelatihan pengembangan talenta digital dan hackathon berfokus pada Akselerasi Pelayanan Publik dan Ekonomi Kreatif Digital. Mengembangkan solusi berbasis teknologi untuk mendukung digitalisasi layanan publik dan daya saing ekonomi digital Indonesia.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Web Developer Intern -->
+                    <div class="relative pl-8 md:pl-10 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-rosebrand-600 border-4 border-white dark:border-[#100912] group-hover:scale-125 transition-transform"></div>
+                        <div class="glass-card p-7 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-950 dark:text-white font-heading">Web Developer Intern</h3>
+                                    <p class="text-sm font-bold text-rosebrand-700 dark:text-rosebrand-400">Politeknik Negeri Ujung Pandang (PNUP)</p>
+                                </div>
+                                <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-xs font-extrabold">Ags 2025 - Jul 2026</span>
+                            </div>
+                            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium" data-i18n="exp.job1Desc">
+                                Mengembangkan dan merilis ~15 profil situs web dinamis untuk program akademik dan unit organisasi kampus menggunakan React, TypeScript, dan Directus CMS. Mengintegrasikan frontend dengan RESTful API serta menerapkan arsitektur decoupled untuk efisiensi pemeliharaan dan keamanan. Berkolaborasi dengan tim Data Center dalam aspek deployment dan troubleshooting.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Junior IT Support Intern -->
+                    <div class="relative pl-8 md:pl-10 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-rosebrand-500 border-4 border-white dark:border-[#100912] group-hover:scale-125 transition-transform"></div>
+                        <div class="glass-card p-7 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-950 dark:text-white font-heading">Junior IT Support Intern</h3>
+                                    <p class="text-sm font-bold text-rosebrand-700 dark:text-rosebrand-400">Politeknik Negeri Ujung Pandang (PNUP)</p>
+                                </div>
+                                <span class="px-3 py-1 rounded-full bg-slate-200/80 dark:bg-slate-900 text-slate-800 dark:text-slate-400 text-xs font-extrabold">Jan 2025 - Ags 2025</span>
+                            </div>
+                            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium" data-i18n="exp.job2Desc">
+                                Memantau infrastruktur jaringan antar gedung dengan network monitoring tools untuk menjamin konektivitas stabil. Mendukung troubleshooting kendala LAN, kabel fiber optic, perangkat keras, serta operasional harian Data Center kampus.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Cloud Computing Cohort - Bangkit Academy -->
+                    <div class="relative pl-8 md:pl-10 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-600 border-4 border-white dark:border-[#100912] group-hover:scale-125 transition-transform"></div>
+                        <div class="glass-card p-7 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-950 dark:text-white font-heading">Cloud Computing Cohort</h3>
+                                    <p class="text-sm font-bold text-rosebrand-700 dark:text-rosebrand-400">Bangkit Academy (by Google, GoTo, Traveloka)</p>
+                                </div>
+                                <span class="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 text-xs font-extrabold">Sep 2024 - Jan 2025</span>
+                            </div>
+                            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium" data-i18n="exp.job3Desc">
+                                Memimpin tim Capstone lintas fungsi (Project Leader). Mengarahkan arsitektur backend di Google Cloud Platform (Cloud Storage, Cloud Run, Firestore), mengarahkan pengembangan API, mempublikasikan dokumentasi teknis, serta menyusun proposal Go-To-Market & showcase video final.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 4. AWARDS & ACHIEVEMENTS SECTION -->
+            <section id="awards" class="space-y-10">
+                <div class="text-center md:text-left space-y-3">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-rosebrand-600 dark:text-rosebrand-400" data-i18n="awards.tag">Kompetisi & Prestasi</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-heading text-slate-950 dark:text-white" data-i18n="awards.title">Prestasi & Dokumentasi</h2>
+                    <p class="text-slate-700 dark:text-slate-400 max-w-xl text-sm sm:text-base font-medium" data-i18n="awards.subtitle">Penghargaan nasional dan dokumentasi kompetisi yang telah diikuti.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Award 1 -->
+                    <div class="glass-card p-7 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-5 hover:border-rosebrand-400 transition-all">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold shadow-md shrink-0">
+                                    <i data-feather="award" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold font-heading text-slate-950 dark:text-white" data-i18n="awards.a1Title">Finalist Top 10 Hackathon Permikomnas 2025</h3>
+                                    <p class="text-xs font-bold text-rosebrand-700 dark:text-rosebrand-400">Perhimpunan Mahasiswa Informatika dan Komputer Nasional</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-300 text-xs font-extrabold shrink-0 border border-amber-200 dark:border-amber-900">Jun 2025</span>
+                        </div>
+
+                        <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium" data-i18n="awards.a1Desc">
+                            Bertindak sebagai Mobile Frontend Developer menggunakan Kotlin dalam membangun aplikasi "SADAR" (Sistem Akses Darurat dan Respon Kesehatan Berbasis Digital) untuk mempercepat akses penanganan medis darurat secara nasional.
+                        </p>
+
+                        <!-- Documentation Image Grid -->
+                        <div class="space-y-2">
+                            <p class="text-[11px] font-extrabold text-slate-500 dark:text-slate-400 uppercase tracking-wider" data-i18n="awards.docTitle">Dokumentasi Acara</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <img onclick="openDocPreview('sertifikat-permikomnas.png', 'Top 10 Finalist Permikomnas')" src="sertifikat-permikomnas.png" alt="Finalist Permikomnas" class="w-full h-28 object-cover rounded-xl border border-rosebrand-200 dark:border-slate-800 hover:scale-105 transition-transform cursor-pointer shadow-sm">
+                                <img onclick="openDocPreview('hackaton-permikomnas.png', 'Dokumentasi Hackaton')" src="hackaton-permikomnas.png" alt="Dokumentasi Hackaton" class="w-full h-28 object-cover rounded-xl border border-rosebrand-200 dark:border-slate-800 hover:scale-105 transition-transform cursor-pointer shadow-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Award 2 -->
+                    <div class="glass-card p-7 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-5 hover:border-rosebrand-400 transition-all">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-rosebrand-600 text-white flex items-center justify-center font-bold shadow-md shrink-0">
+                                    <i data-feather="star" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold font-heading text-slate-950 dark:text-white" data-i18n="awards.a2Title">DIGDAYA X Hackathon Innovation</h3>
+                                    <p class="text-xs font-bold text-rosebrand-700 dark:text-rosebrand-400">Pusat Inovasi Digital Indonesia (BI & OJK)</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-xs font-extrabold shrink-0 border border-rosebrand-200 dark:border-rosebrand-900">July 2026</span>
+                        </div>
+
+                        <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium" data-i18n="awards.a2Desc">
+                            Pelatihan talenta digital dan kompetisi hackathon nasional berfokus pada akselerasi layanan publik digital, pariwisata, serta penguatan daya saing ekonomi kreatif digital Indonesia.
+                        </p>
+
+                        <!-- Documentation Image Grid -->
+                        <div class="space-y-2">
+                            <p class="text-[11px] font-extrabold text-slate-500 dark:text-slate-400 uppercase tracking-wider" data-i18n="awards.docTitle">Dokumentasi Acara</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <img onclick="openDocPreview('digdaya-event1.png', 'Practitioner Training')" src="digdaya-event1.png" alt="Program DIGDAYA" class="w-full h-28 object-cover rounded-xl border border-rosebrand-200 dark:border-slate-800 hover:scale-105 transition-transform cursor-pointer shadow-sm">
+                                <img onclick="openDocPreview('digdaya-event.png', 'Practitioner Training')" src="digdaya-event.png" alt="Practitioner Training" class="w-full h-28 object-cover rounded-xl border border-rosebrand-200 dark:border-slate-800 hover:scale-105 transition-transform cursor-pointer shadow-sm">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. ORGANIZATION EXPERIENCE SECTION -->
+            <section id="organization" class="space-y-10">
+                <div class="text-center md:text-left space-y-3">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-rosebrand-600 dark:text-rosebrand-400" data-i18n="org.tag">Kepemimpinan & Komunitas</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-heading text-slate-950 dark:text-white" data-i18n="org.title">Pengalaman Organisasi</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Org 1 -->
+                    <div class="glass-card p-7 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 rounded-2xl bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-600 dark:text-rosebrand-400 flex items-center justify-center font-bold">
+                                <i data-feather="users" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-xs font-extrabold text-slate-500 dark:text-slate-400">Feb 2025 - Jul 2025</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold font-heading text-slate-950 dark:text-white" data-i18n="org.role1">Head of Education Department</h3>
+                            <p class="text-xs font-bold text-rosebrand-700 dark:text-rosebrand-400">Himpunan Mahasiswa Teknik Informatika dan Komputer (HIMATIK-PNUP)</p>
+                        </div>
+                        <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium" data-i18n="org.desc1">
+                            Memimpin Departemen Pendidikan dalam merencanakan & mengeksekusi program pengembangan kompetensi mahasiswa, termasuk "Bootcamp HIMATIK 2025" (49 peserta, 30+ sesi Web Dev & Graphic Design), mentorship lomba, seminar teknologi AI, serta peningkatan literasi digital.
+                        </p>
+                    </div>
+                    
+                   
+                </div>
+            </section>
+
+            <!-- 6. FORMAL EDUCATION SECTION -->
+            <section id="education" class="space-y-10">
+                <div class="text-center md:text-left space-y-3">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-rosebrand-600 dark:text-rosebrand-400" data-i18n="edu.tag">Latar Belakang Akademis</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-heading text-slate-950 dark:text-white" data-i18n="edu.title">Pendidikan</h2>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    <div class="flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-2xl bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-600 dark:text-rosebrand-400 flex items-center justify-center shrink-0">
+                            <i data-feather="book-open" class="w-7 h-7"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="text-xl font-bold text-slate-950 dark:text-white font-heading" data-i18n="edu.degree">Sarjana Terapan (S.Tr.Kom) - Teknik Informatika dan Komputer</h3>
+                            <p class="text-sm font-bold text-rosebrand-700 dark:text-rosebrand-400">Politeknik Negeri Ujung Pandang (PNUP)</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 pt-1 font-medium" data-i18n="edu.details">IPK 3.79 / 4.00 • Fokus Pengkajian: Aplikasi Web Dinamis, Directus CMS, RESTful API & Cloud Computing</p>
+                        </div>
+                    </div>
+                    <span class="px-4 py-2 rounded-2xl bg-rosebrand-100/80 dark:bg-slate-900 text-rosebrand-800 dark:text-rosebrand-300 text-xs font-extrabold border border-rosebrand-200 dark:border-slate-800 shrink-0">
+                        2022 - 2026
+                    </span>
+                </div>
+            </section>
+
+            <!-- 7. CERTIFICATIONS & TRAINING SECTION -->
+            <section id="certifications" class="space-y-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div class="text-center md:text-left space-y-3">
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-rosebrand-600 dark:text-rosebrand-400" data-i18n="cert.tag">Kredensial Resmi</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-heading text-slate-950 dark:text-white" data-i18n="cert.title">Sertifikasi & Lisensi Professional</h2>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl font-medium" data-i18n="cert.subtitle">Total sertifikasi resmi dari BNSP, Google Cloud Skills Boost, Dicoding Indonesia, dan Kominfo (Digital Talent Scholarship).</p>
+                    </div>
+
+                    <!-- Filter Category Buttons -->
+                    <div class="flex flex-wrap justify-center md:justify-end gap-2 shrink-0">
+                        <button onclick="filterCertificates('all')" class="cert-tab-btn px-4 py-2 rounded-xl text-xs font-bold border transition-all bg-rosebrand-600 text-white border-rosebrand-600 shadow-md" data-filter="all">Semua (39)</button>
+                        <button onclick="filterCertificates('bnsp')" class="cert-tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-rosebrand-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-rosebrand-400 transition-all" data-filter="bnsp">BNSP (2)</button>
+                        <button onclick="filterCertificates('gcp')" class="cert-tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-rosebrand-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-rosebrand-400 transition-all" data-filter="gcp">Google Cloud (20)</button>
+                        <button onclick="filterCertificates('dicoding')" class="cert-tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-rosebrand-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-rosebrand-400 transition-all" data-filter="dicoding">Dicoding (13)</button>
+                        <button onclick="filterCertificates('dts')" class="cert-tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-rosebrand-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-rosebrand-400 transition-all" data-filter="dts">Kominfo DTS (3)</button>
+                    </div>
+                </div>
+
+                <!-- ALL 39 CERTIFICATES CONTAINER GRID -->
+                <div id="certContainerGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                    <!-- ================= BNSP CERTIFICATES (3) ================= -->
+                    <div class="cert-card bnsp glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 text-[10px] font-extrabold uppercase tracking-wider border border-emerald-300 dark:border-emerald-800">BNSP</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Sep 2026 - 2029</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Web Developer Assistant</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Badan Nasional Sertifikasi Profesi (BNSP)</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 62199 2513 0 0012358 2026</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Front-End, Web Dev</span>
+                            <i data-feather="shield" class="w-4 h-4 text-emerald-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card bnsp glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 text-[10px] font-extrabold uppercase tracking-wider border border-emerald-300 dark:border-emerald-800">BNSP</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Nov 2024 - Nov 2027</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Junior Mobile Programmer</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Badan Nasional Sertifikasi Profesi (BNSP)</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 62019 2514 3 0 11 2887 2024</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Kotlin, Mobile Application</span>
+                            <i data-feather="shield" class="w-4 h-4 text-emerald-600"></i>
+                        </div>
+                    </div>
+
+                    <!-- ================= DICODING CERTIFICATES (13) ================= -->
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Jul 2026 - 2029</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Belajar Fundamental Deep Learning</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: MEPJO4GV6Z3V</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Deep Learning, AI</span>
+                            <i data-feather="award" class="w-4 h-4 text-rosebrand-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Jul 2026 - 2029</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Belajar Dasar Manajemen Proyek</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: ERZRL36EMZYV</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Project Management</span>
+                            <i data-feather="award" class="w-4 h-4 text-rosebrand-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Jun 2026 - 2029</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Belajar Machine Learning untuk Pemula</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: N9ZONQ1V6XG5</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Machine Learning, Python</span>
+                            <i data-feather="award" class="w-4 h-4 text-rosebrand-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Jun 2026 - 2029</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Belajar Back-End Pemula dengan Python</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 72ZDJRK9VZYW</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Back-End Dev, Python</span>
+                            <i data-feather="award" class="w-4 h-4 text-rosebrand-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Mei 2026 - 2029</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Memulai Pemrograman dengan Python</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 1OP8RMYDVZQK</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Python Basics</span>
+                            <i data-feather="award" class="w-4 h-4 text-rosebrand-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Mei 2026 - 2029</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Belajar Dasar Google Cloud</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 2VX30VRDNXYQ</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Google Cloud, Cloud Computing</span>
+                            <i data-feather="cloud" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Mei 2026 - 2029</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Prompt Engineering untuk Software Developer</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: QLZ999WREZ5D</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Prompt Engineering, GenAI</span>
+                            <i data-feather="cpu" class="w-4 h-4 text-purple-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Mei 2026 - 2029</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Belajar Dasar Data Science</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: ERZRLLV6WZYV</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Data Science, Analytics</span>
+                            <i data-feather="bar-chart-2" class="w-4 h-4 text-rosebrand-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Mei 2026 - 2029</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Belajar Dasar UX Design</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: JLX1VVE52Z72</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Front-End, UX Design</span>
+                            <i data-feather="layout" class="w-4 h-4 text-rosebrand-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Des 2024 - 2027</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Belajar Penerapan Machine Learning dengan Google Cloud</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 1RXY2G3KMXVM</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Cloud Computing, Back-End</span>
+                            <i data-feather="cloud" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Nov 2024 - 2027</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Belajar Dasar AI</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: GRX54EQR2P0M</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Artificial Intelligence</span>
+                            <i data-feather="cpu" class="w-4 h-4 text-purple-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Nov 2024 - 2027</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Menjadi Google Cloud Engineer</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 53XEQGEOYXRN</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Cloud Computing, GCP</span>
+                            <i data-feather="cloud" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Nov 2024 - 2027</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Belajar Membuat Aplikasi Back-End untuk Pemula dengan Google Cloud</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 98XW58W6LPM3</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Node.js, JavaScript, GCP</span>
+                            <i data-feather="server" class="w-4 h-4 text-rosebrand-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Nov 2024 - 2027</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Belajar Dasar Pemrograman JavaScript</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 4EXG737NGPRL</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>JavaScript, Back-End</span>
+                            <i data-feather="code" class="w-4 h-4 text-amber-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Sep 2024 - 2027</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Belajar Dasar Git dengan GitHub</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: GRX54KNOYP0M</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Git, GitHub, Version Control</span>
+                            <i data-feather="git-branch" class="w-4 h-4 text-slate-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dicoding glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-[10px] font-extrabold uppercase tracking-wider border border-rosebrand-300 dark:border-rosebrand-800">Dicoding</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Sep 2024 - 2027</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Belajar Dasar Pemrograman Web</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Dicoding Indonesia</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: NVP74Y09GPR0</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>HTML5, CSS3, Web Dev</span>
+                            <i data-feather="code" class="w-4 h-4 text-rosebrand-600"></i>
+                        </div>
+                    </div>
+
+                    <!-- ================= DIGITAL TALENT SCHOLARSHIP (3) ================= -->
+                    <div class="cert-card dts glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 text-[10px] font-extrabold uppercase tracking-wider border border-purple-300 dark:border-purple-800">Kominfo DTS</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Apr 2026</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Intermediate Assistant Web Developer - VBL</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Digital Talent Scholarship</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 212124181060-21</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Front-End, Web Development</span>
+                            <i data-feather="award" class="w-4 h-4 text-purple-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dts glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 text-[10px] font-extrabold uppercase tracking-wider border border-purple-300 dark:border-purple-800">Kominfo DTS</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Apr 2026</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Fundamental of Assistant Web Developer - VBL</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Digital Talent Scholarship</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 212123491060-11</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Web Dev Fundamentals</span>
+                            <i data-feather="award" class="w-4 h-4 text-purple-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dts glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 text-[10px] font-extrabold uppercase tracking-wider border border-purple-300 dark:border-purple-800">Kominfo DTS</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Jun 2025</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Data Analisis (Micro Skill)</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Digital Talent Scholarship</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 2299818850-11443</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Data Analysis</span>
+                            <i data-feather="bar-chart-2" class="w-4 h-4 text-purple-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card dts glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 text-[10px] font-extrabold uppercase tracking-wider border border-purple-300 dark:border-purple-800">Kominfo DTS</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Ags 2024 - 2027</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Junior Mobile Programmer (VSGA)</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Digital Talent Scholarship</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 19382731060-36/VSGA/BLSDM.Kominfo/2024</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Mobile Programming</span>
+                            <i data-feather="smartphone" class="w-4 h-4 text-purple-600"></i>
+                        </div>
+                    </div>
+
+                    <!-- ================= GOOGLE CLOUD SKILLS BOOST (20) ================= -->
+                    <div class="cert-card gcp glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 text-[10px] font-extrabold uppercase tracking-wider border border-blue-300 dark:border-blue-800">Google Cloud</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Feb 2025</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Prompt Design in Vertex AI Skill Badge</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Google Cloud Skills Boost</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Vertex AI, GenAI</span>
+                            <i data-feather="cloud" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card gcp glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 text-[10px] font-extrabold uppercase tracking-wider border border-blue-300 dark:border-blue-800">Google Cloud</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Des 2024</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Application Development with Cloud Run</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Google Cloud Skills Boost</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 13188590</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Cloud Run, Containers</span>
+                            <i data-feather="cloud" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card gcp glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 text-[10px] font-extrabold uppercase tracking-wider border border-blue-300 dark:border-blue-800">Google Cloud</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Okt 2024</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Google Cloud Computing Foundations Certificate</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Google Cloud Skills Boost</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Cloud Foundations</span>
+                            <i data-feather="cloud" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card gcp glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 text-[10px] font-extrabold uppercase tracking-wider border border-blue-300 dark:border-blue-800">Google Cloud</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Okt 2024</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Build Infrastructure with Terraform on Google Cloud</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Google Cloud Skills Boost</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 12064759</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Terraform, IaC</span>
+                            <i data-feather="cloud" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card gcp glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 text-[10px] font-extrabold uppercase tracking-wider border border-blue-300 dark:border-blue-800">Google Cloud</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Okt 2024</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Getting Started with Google Kubernetes Engine (GKE)</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Google Cloud Skills Boost</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 11999866</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>GKE, Kubernetes</span>
+                            <i data-feather="cloud" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card gcp glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 text-[10px] font-extrabold uppercase tracking-wider border border-blue-300 dark:border-blue-800">Google Cloud</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Okt 2024</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Build a Secure Google Cloud Network</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Google Cloud Skills Boost</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 11845515</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Cloud Security, Networking</span>
+                            <i data-feather="shield" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card gcp glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 text-[10px] font-extrabold uppercase tracking-wider border border-blue-300 dark:border-blue-800">Google Cloud</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Okt 2024</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Implement DevOps Workflows in Google Cloud</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Google Cloud Skills Boost</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 12391358</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>DevOps Workflows</span>
+                            <i data-feather="cloud" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                    </div>
+
+                    <div class="cert-card gcp glass-card p-6 rounded-3xl border border-rosebrand-200/90 dark:border-rosebrand-900/40 space-y-4 hover:-translate-y-1 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 text-[10px] font-extrabold uppercase tracking-wider border border-blue-300 dark:border-blue-800">Google Cloud</span>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 font-extrabold">Okt 2024</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-950 dark:text-white text-base font-heading">Preparing for Your Associate Cloud Engineer Journey</h3>
+                            <p class="text-xs text-rosebrand-700 dark:text-rosebrand-400 font-bold">Google Cloud Skills Boost</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 pt-1 font-mono">ID: 11983591</p>
+                        </div>
+                        <div class="text-[11px] text-slate-600 dark:text-slate-400 border-t border-rosebrand-200 dark:border-slate-800/80 pt-3 flex justify-between items-center font-medium">
+                            <span>Associate Cloud Engineer</span>
+                            <i data-feather="cloud" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 8. FEATURED PROJECTS SECTION -->
+            <section id="projects" class="space-y-10">
+                <div class="text-center md:text-left space-y-3">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-rosebrand-600 dark:text-rosebrand-400" data-i18n="proj.tag">Portofolio Pilihan</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-heading text-slate-950 dark:text-white" data-i18n="proj.title">Proyek & Hasil Karya</h2>
+                    <p class="text-slate-700 dark:text-slate-400 max-w-xl text-sm sm:text-base font-medium" data-i18n="proj.subtitle">Klik kartu proyek untuk melihat studi kasus terperinci, arsitektur teknis, dan galeri antarmuka.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Project Card 1: 15 PNUP Websites -->
+                    <div onclick="openProjectDetail(1)" class="glass-card rounded-3xl overflow-hidden border border-rosebrand-200/90 dark:border-rosebrand-900/40 hover:border-rosebrand-400 dark:hover:border-rosebrand-800 transition-all cursor-pointer group flex flex-col justify-between spotlight-card">
+                        <div class="space-y-4 p-2">
+                            <div class="rounded-2xl overflow-hidden aspect-video bg-slate-900 relative">
+                                <img src="project1-webprofil.png" alt="15 Web Profil PNUP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-white text-[10px] font-extrabold tracking-wider border border-white/20 uppercase">React + Directus</span>
+                            </div>
+                            <div class="px-5 pt-2 space-y-2">
+                                <h3 class="text-lg font-bold font-heading text-slate-950 dark:text-white group-hover:text-rosebrand-600 dark:group-hover:text-rosebrand-400 transition-colors" data-i18n="proj.p1Title">15 Web Profil Unit & Prodi PNUP</h3>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium line-clamp-2" data-i18n="proj.p1Desc">Pengembangan & rilis 15 situs web kampus berbasis React, TypeScript, dan Directus CMS dengan arsitektur decoupled API.</p>
+                            </div>
+                        </div>
+                        <div class="p-5 pt-4 flex items-center justify-between border-t border-rosebrand-200/60 dark:border-slate-800/80 mt-4 text-xs font-bold text-rosebrand-600 dark:text-rosebrand-400">
+                            <span data-i18n="proj.readMore">Buka Halaman Detail</span>
+                            <i data-feather="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2: Skincare Backend GCP -->
+                    <div onclick="openProjectDetail(2)" class="glass-card rounded-3xl overflow-hidden border border-rosebrand-200/90 dark:border-rosebrand-900/40 hover:border-rosebrand-400 dark:hover:border-rosebrand-800 transition-all cursor-pointer group flex flex-col justify-between spotlight-card">
+                        <div class="space-y-4 p-2">
+                            <div class="rounded-2xl overflow-hidden aspect-video bg-slate-900 relative">
+                                <img src="project2-scancare.png" alt="Skincare Cloud Backend" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-white text-[10px] font-extrabold tracking-wider border border-white/20 uppercase">Google Cloud</span>
+                            </div>
+                            <div class="px-5 pt-2 space-y-2">
+                                <h3 class="text-lg font-bold font-heading text-slate-950 dark:text-white group-hover:text-rosebrand-600 dark:group-hover:text-rosebrand-400 transition-colors" data-i18n="proj.p2Title">ScanCare : "Skincare Ingredient Safety Detector"</h3>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium line-clamp-2" data-i18n="proj.p2Desc">Arsitektur backend cloud terdistribusi di GCP (Cloud Run, Storage, Firestore) untuk analisa kandungan kosmetik dan BPOM.</p>
+                            </div>
+                        </div>
+                        <div class="p-5 pt-4 flex items-center justify-between border-t border-rosebrand-200/60 dark:border-slate-800/80 mt-4 text-xs font-bold text-rosebrand-600 dark:text-rosebrand-400">
+                            <span data-i18n="proj.readMore">Buka Halaman Detail</span>
+                            <i data-feather="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3: SADAR Mobile App -->
+                    <div onclick="openProjectDetail(3)" class="glass-card rounded-3xl overflow-hidden border border-rosebrand-200/90 dark:border-rosebrand-900/40 hover:border-rosebrand-400 dark:hover:border-rosebrand-800 transition-all cursor-pointer group flex flex-col justify-between spotlight-card">
+                        <div class="space-y-4 p-2">
+                            <div class="rounded-2xl overflow-hidden aspect-video bg-slate-900 relative">
+                                <img src="project3-sadar.png" alt="SADAR Mobile App" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-amber-500 text-slate-950 text-[10px] font-extrabold tracking-wider border border-amber-300 uppercase">Top 10 Finalist</span>
+                            </div>
+                            <div class="px-5 pt-2 space-y-2">
+                                <h3 class="text-lg font-bold font-heading text-slate-950 dark:text-white group-hover:text-rosebrand-600 dark:group-hover:text-rosebrand-400 transition-colors" data-i18n="proj.p3Title">SADAR - Mobile Akses Kesehatan Darurat</h3>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium line-clamp-2" data-i18n="proj.p3Desc">Aplikasi mobile Kotlin penanganan respon darurat medis nasional. Meraih predikat Top 10 Finalist Hackathon Permikomnas 2025.</p>
+                            </div>
+                        </div>
+                        <div class="p-5 pt-4 flex items-center justify-between border-t border-rosebrand-200/60 dark:border-slate-800/80 mt-4 text-xs font-bold text-rosebrand-600 dark:text-rosebrand-400">
+                            <span data-i18n="proj.readMore">Buka Halaman Detail</span>
+                            <i data-feather="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4: Nutrisia Mobile App -->
+                    <div onclick="openProjectDetail(4)" class="glass-card rounded-3xl overflow-hidden border border-rosebrand-200/90 dark:border-rosebrand-900/40 hover:border-rosebrand-400 dark:hover:border-rosebrand-800 transition-all cursor-pointer group flex flex-col justify-between spotlight-card">
+                        <div class="space-y-4 p-2">
+                            <div class="rounded-2xl overflow-hidden aspect-video bg-slate-900 relative">
+                                <img src="project4-nutrisia.png" alt="Nutrisia App" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-rosebrand-600 text-white text-[10px] font-extrabold tracking-wider border border-white/20 uppercase">Mobile App + OCR</span>
+                            </div>
+                            <div class="px-5 pt-2 space-y-2">
+                                <h3 class="text-lg font-bold font-heading text-slate-950 dark:text-white group-hover:text-rosebrand-600 dark:group-hover:text-rosebrand-400 transition-colors" data-i18n="proj.p4Title">Nutrisia - Nutrisi Terpantau Sehat Ideal dan Akurat</h3>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium line-clamp-2" data-i18n="proj.p4Desc">Aplikasi mobile inovatif dengan teknologi OCR (Optical Character Recognition) untuk ekstraksi informasi nutrisi dari kemasan makanan.</p>
+                            </div>
+                        </div>
+                        <div class="p-5 pt-4 flex items-center justify-between border-t border-rosebrand-200/60 dark:border-slate-800/80 mt-4 text-xs font-bold text-rosebrand-600 dark:text-rosebrand-400">
+                            <span data-i18n="proj.readMore">Buka Halaman Detail</span>
+                            <i data-feather="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 9. CONTACT SECTION -->
+            <section id="contact" class="space-y-10">
+                <div class="glass-card p-8 sm:p-12 rounded-[2.5rem] border border-rosebrand-300/80 dark:border-rosebrand-900/50 shadow-2xl relative overflow-hidden">
+                    <div class="max-w-2xl space-y-6">
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-rosebrand-600 dark:text-rosebrand-400" data-i18n="contact.tag">Mari Berkolaborasi</span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight font-heading text-slate-950 dark:text-white" data-i18n="contact.title">Tertarik bekerjasama atau merekrut saya?</h2>
+                        <p class="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-medium" data-i18n="contact.subtitle">
+                            Saya berdomisili di Makassar, Sulawesi Selatan dan terbuka untuk posisi Web Developer, Software Engineer, Cloud Associate, maupun kesempatan karir teknologi lainnya.
+                        </p>
+
+                        <div class="grid sm:grid-cols-2 gap-4 pt-4">
+                            <!-- Direct WhatsApp -->
+                            <a href="https://wa.me/6287763443067?text=Halo%20Adinda,%20saya%20tertarik%20untuk%20berdiskusi%20mengenai%20peluang%20karir/proyek." target="_blank" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 hover:border-rosebrand-400 transition-all flex items-center gap-4 group shadow-sm">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                                    <i data-feather="message-circle" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 font-bold" data-i18n="contact.chatWa">Pesan WhatsApp</p>
+                                    <p class="text-sm font-bold text-slate-950 dark:text-white group-hover:text-rosebrand-600 transition-colors">0877-6344-3067</p>
+                                </div>
+                            </a>
+
+                            <!-- Email Direct -->
+                            <button onclick="copyEmailToClipboard()" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 hover:border-rosebrand-400 transition-all flex items-center gap-4 text-left group shadow-sm">
+                                <div class="w-12 h-12 rounded-xl bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-600 dark:text-rosebrand-400 flex items-center justify-center shrink-0">
+                                    <i data-feather="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 font-bold" data-i18n="contact.copyMail">Salin Email</p>
+                                    <p class="text-sm font-bold text-slate-950 dark:text-white group-hover:text-rosebrand-600 transition-colors">adindaaekatrisna@gmail.com</p>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="pt-4 flex items-center gap-4">
+                            <a href="https://linkedin.com/in/adinda-khusnul-khotimah" target="_blank" aria-label="LinkedIn Profile" class="px-5 py-3 rounded-2xl bg-white dark:bg-slate-900 border border-rosebrand-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 hover:text-rosebrand-600 transition-colors shadow-sm text-xs font-bold flex items-center gap-2">
+                                <i data-feather="linkedin" class="w-4 h-4 text-blue-600"></i>
+                                <span>linkedin.com/in/adinda-khusnul-khotimah</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="border-t border-rosebrand-200/80 dark:border-rosebrand-950/60 py-10 bg-white/70 dark:bg-[#100912]/50">
+            <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold text-slate-600 dark:text-slate-400">
+                <p>© 2026 Adinda Khusnul Khotimah. All Rights Reserved.</p>
+                <p>Makassar, South Sulawesi, Indonesia 🇮🇩</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- DEDICATED PROJECT DETAIL FULLPAGE VIEW -->
+    <div id="projectDetailView" class="hidden min-h-screen bg-slate-100 dark:bg-[#100912] text-slate-900 dark:text-slate-100 z-50 relative pb-20">
+        <!-- Top Sticky Header -->
+        <div class="sticky top-0 z-40 bg-white/90 dark:bg-[#100912]/80 backdrop-blur-md border-b border-rosebrand-200 dark:border-slate-800">
+            <div class="max-w-5xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+                <button onclick="closeProjectDetail()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-rosebrand-100 dark:bg-slate-900 text-rosebrand-700 dark:text-rosebrand-400 font-bold text-xs hover:bg-rosebrand-200 dark:hover:bg-slate-800 transition-colors">
+                    <i data-feather="arrow-left" class="w-4 h-4"></i>
+                    <span data-i18n="detailPage.back">Kembali ke Portofolio</span>
+                </button>
+                <span id="detailCategoryBadge" class="px-3.5 py-1.5 rounded-full bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-800 dark:text-rosebrand-300 text-xs font-extrabold uppercase tracking-wider border border-rosebrand-200 dark:border-rosebrand-900">
+                    Category
+                </span>
+            </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-5 sm:px-8 pt-10 space-y-12">
+            <!-- Project Title & Subtitle -->
+            <div class="space-y-4">
+                <h1 id="detailTitle" class="text-3xl sm:text-5xl font-extrabold tracking-tight font-heading text-slate-950 dark:text-white">Title</h1>
+                <p id="detailSubtitle" class="text-base sm:text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-medium"></p>
+            </div>
+
+            <!-- Main Hero Image View -->
+            <div class="rounded-3xl overflow-hidden aspect-[16/9] border border-rosebrand-200 dark:border-slate-800 shadow-2xl bg-slate-900">
+                <img id="detailMainImage" src="" alt="Project Hero Image" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Two Column Case Study Content -->
+            <div class="grid lg:grid-cols-3 gap-10 pt-4">
+                <div class="lg:col-span-2 space-y-8">
+                    <!-- Overview -->
+                    <div class="glass-card p-8 rounded-3xl border border-rosebrand-200/90 dark:border-slate-800 space-y-4">
+                        <h3 class="text-xl font-bold font-heading text-slate-950 dark:text-white" data-i18n="detailPage.overview">Ringkasan & Deskripsi Proyek</h3>
+                        <p id="detailOverviewText" class="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed font-medium"></p>
+                    </div>
+
+                    <!-- Key Technical Features -->
+                    <div class="glass-card p-8 rounded-3xl border border-rosebrand-200/90 dark:border-slate-800 space-y-4">
+                        <h3 class="text-xl font-bold font-heading text-slate-950 dark:text-white" data-i18n="detailPage.features">Solusi & Pencapaian Utama</h3>
+                        <ul id="detailFeaturesList" class="space-y-3 text-sm sm:text-base text-slate-700 dark:text-slate-300 font-medium"></ul>
+                    </div>
+
+                    <!-- Screenshot Gallery View -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold font-heading text-slate-950 dark:text-white" data-i18n="detailPage.gallery">Galeri Antarmuka / Tampilan Proyek</h3>
+                        <div id="detailGalleryGrid" class="grid sm:grid-cols-3 gap-4"></div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Metadata & Actions -->
+                <div class="space-y-6">
+                    <div class="glass-card p-7 rounded-3xl border border-rosebrand-200/90 dark:border-slate-800 space-y-6">
+                        <div>
+                            <p class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3" data-i18n="detailPage.stack">Tech Stack</p>
+                            <div id="detailTechBadges" class="flex flex-wrap gap-2"></div>
+                        </div>
+
+                        <div class="border-t border-rosebrand-200 dark:border-slate-800/80 pt-5 space-y-3">
+                            <p class="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400" data-i18n="detailPage.role">Peran & Tanggung Jawab</p>
+                            <p id="detailRoleText" class="text-sm font-bold text-slate-900 dark:text-slate-200"></p>
+                        </div>
+
+                        <div class="border-t border-rosebrand-200 dark:border-slate-800/80 pt-6 space-y-3">
+                            <a id="detailLiveBtn" href="#" target="_blank" class="w-full py-3.5 px-6 rounded-2xl bg-rosebrand-600 text-white font-bold text-sm hover:bg-rosebrand-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-rosebrand-600/25">
+                                <i data-feather="external-link" class="w-4 h-4"></i>
+                                <span data-i18n="detailPage.visit">Kunjungi Tautan Proyek</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DOCUMENTATION PHOTO PREVIEW MODAL -->
+    <div id="docPreviewModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+        <div class="relative max-w-4xl w-full bg-white dark:bg-[#150d17] rounded-3xl p-6 shadow-2xl border border-rosebrand-200 dark:border-rosebrand-900 space-y-4">
+            <div class="flex items-center justify-between">
+                <h4 id="docModalTitle" class="text-base font-bold font-heading text-slate-950 dark:text-white">Dokumentasi Penghargaan</h4>
+                <button onclick="closeDocPreview()" class="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200">
+                    <i data-feather="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-slate-900">
+                <img id="docModalImg" src="" alt="Documentation Preview" class="w-full h-full object-contain">
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        feather.replace();
+
+        // Certificate Category Filter Function
+        function filterCertificates(category) {
+            const certCards = document.querySelectorAll('.cert-card');
+            const certButtons = document.querySelectorAll('.cert-tab-btn');
+
+            certButtons.forEach(btn => {
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.className = "cert-tab-btn px-4 py-2 rounded-xl text-xs font-bold border transition-all bg-rosebrand-600 text-white border-rosebrand-600 shadow-md";
+                } else {
+                    btn.className = "cert-tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-rosebrand-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-rosebrand-400 transition-all";
+                }
+            });
+
+            certCards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Multi-language System (Default set to 'en')
+        let currentLang = 'en';
+
+        const translations = {
+            id: {
+                "toast.copy": "Alamat Email (ekatrisna@gmail.com) telah disalin!",
+                "nav.about": "Tentang",
+                "nav.skills": "Keahlian",
+                "nav.experience": "Pengalaman",
+                "nav.awards": "Prestasi",
+                "nav.organization": "Organisasi",
+                "nav.education": "Pendidikan",
+                "nav.certifications": "Sertifikasi",
+                "nav.projects": "Proyek",
+                "nav.contact": "Kontak",
+
+                "hero.status": "Tersedia Untuk Magang / Pekerjaan Baru",
+                "hero.title": "Membangun aplikasi web & cloud <span class=\"bg-gradient-to-r from-rosebrand-600 via-pink-600 to-purple-600 bg-clip-text text-transparent\">handal & modern.</span>",
+                "hero.description": "Halo! Saya <strong class=\"text-slate-950 dark:text-white font-bold\">Adinda Khusnul Khotimah</strong>, Lulusan Sarjana Terapan Teknik Informatika & Komputer (PNUP). Berpengalaman dalam pengembangan aplikasi web dinamis menggunakan React, TypeScript, Directus CMS, integrasi RESTful API, serta fondasi Cloud Computing (GCP).",
+                "hero.ctaPrimary": "Eksplorasi Karya Saya",
+                "hero.ctaSecondary": "Hubungi Saya",
+                "hero.expYears": "IPK / GPA",
+
+                "skills.tag": "Spesialisasi",
+                "skills.title": "Keahlian & Technical Stack",
+                "skills.subtitle": "Teknologi, bahasa pemrograman, dan alat pengembangan yang dikuasai berdasarkan pengalaman proyek nyata.",
+                "skills.feDesc": "Membangun antarmuka web dinamis dan aplikasi mobile yang responsif.",
+                "skills.beDesc": "Arsitektur decoupled, konsumsi RESTful API, dan headless CMS.",
+                "skills.devopsDesc": "Deployment cloud, manajemen server, dan alur kerja berbasis Git.",
+
+                "exp.tag": "Pengalaman Lapangan",
+                "exp.title": "Pengalaman Kerja & Program Pelatihan",
+                "exp.job0Desc": "Mengikuti pelatihan pengembangan talenta digital dan hackathon berfokus pada Akselerasi Pelayanan Publik dan Ekonomi Kreatif Digital. Mengembangkan solusi berbasis teknologi untuk mendukung digitalisasi layanan publik dan daya saing ekonomi digital Indonesia.",
+                "exp.job1Desc": "Mengembangkan dan merilis ~15 profil situs web dinamis untuk program akademik dan unit organisasi kampus menggunakan React, TypeScript, dan Directus CMS. Mengintegrasikan frontend dengan RESTful API serta menerapkan arsitektur decoupled untuk efisiensi pemeliharaan dan keamanan. Berkolaborasi dengan tim Data Center dalam aspek deployment dan troubleshooting.",
+                "exp.job2Desc": "Memantau infrastruktur jaringan antar gedung dengan network monitoring tools untuk menjamin konektivitas stabil. Mendukung troubleshooting kendala LAN, kabel fiber optic, perangkat keras, serta operasional harian Data Center kampus.",
+                "exp.job3Desc": "Memimpin tim Capstone lintas fungsi (Project Leader). Mengarahkan arsitektur backend di Google Cloud Platform (Cloud Storage, Cloud Run, Firestore), mengarahkan pengembangan API, mempublikasikan dokumentasi teknis, serta menyusun proposal Go-To-Market & showcase video final.",
+
+                "awards.tag": "Kompetisi & Prestasi",
+                "awards.title": "Prestasi & Dokumentasi",
+                "awards.subtitle": "Penghargaan nasional dan dokumentasi kompetisi yang telah diikuti.",
+                "awards.a1Title": "Finalist Top 10 Hackathon Permikomnas 2025",
+                "awards.a1Desc": "Bertindak sebagai Mobile Frontend Developer menggunakan Kotlin dalam membangun aplikasi \"SADAR\" (Sistem Akses Darurat dan Respon Kesehatan Berbasis Digital) untuk mempercepat akses penanganan medis darurat secara nasional.",
+                "awards.a2Title": "DIGDAYA X Hackathon Innovation",
+                "awards.a2Desc": "Pelatihan talenta digital dan kompetisi hackathon nasional berfokus pada akselerasi layanan publik digital, pariwisata, serta penguatan daya saing ekonomi kreatif digital Indonesia.",
+                "awards.docTitle": "Dokumentasi Acara",
+
+                "org.tag": "Kepemimpinan & Komunitas",
+                "org.title": "Pengalaman Organisasi",
+                "org.role1": "Head of Education Department",
+                "org.desc1": "Memimpin Departemen Pendidikan dalam merencanakan & mengeksekusi program pengembangan kompetensi mahasiswa, termasuk \"Bootcamp HIMATIK 2025\" (49 peserta, 30+ sesi Web Dev & Graphic Design), mentorship lomba, seminar teknologi AI, serta peningkatan literasi digital.",
+                "org.role2": "Capstone Project Team Leader",
+                "org.desc2": "Memimpin tim lintas disiplin ilmu (Machine Learning, Mobile, Cloud) dalam menyelesaikan proyek solusi deteksi bahan berbahaya kosmetik terintegrasi aturan BPOM dari awal riset hingga Go-To-Market proposal.",
+
+                "edu.tag": "Latar Belakang Akademis",
+                "edu.title": "Pendidikan Formal",
+                "edu.degree": "Sarjana Terapan (S.Tr.Kom) - Teknik Informatika dan Komputer",
+                "edu.details": "IPK 3.79 / 4.00 • Fokus Pengkajian: Aplikasi Web Dinamis, Directus CMS, RESTful API & Cloud Computing",
+
+                "cert.tag": "Kredensial Resmi",
+                "cert.title": "Sertifikasi & Lisensi Professional",
+
+                "proj.tag": "Portofolio Pilihan",
+                "proj.title": "Proyek & Hasil Karya",
+                "proj.subtitle": "Klik kartu proyek untuk melihat studi kasus terperinci, arsitektur teknis, dan galeri antarmuka.",
+                "proj.p1Title": "15 Web Profil Unit & Prodi PNUP",
+                "proj.p1Desc": "Pengembangan & rilis 15 situs web kampus berbasis React, TypeScript, dan Directus CMS dengan arsitektur decoupled API.",
+                "proj.p2Title": "Skincare Ingredient Safety Detector",
+                "proj.p2Desc": "Arsitektur backend cloud terdistribusi di GCP (Cloud Run, Storage, Firestore) untuk analisa kandungan kosmetik dan BPOM.",
+                "proj.p3Title": "SADAR - Mobile Akses Kesehatan Darurat",
+                "proj.p3Desc": "Aplikasi mobile Kotlin penanganan respon darurat medis nasional. Meraih predikat Top 10 Finalist Hackathon Permikomnas 2025.",
+                "proj.p4Title": "Nutrisia - Nutrisi Terpantau Sehat Ideal dan Akurat",
+                "proj.p4Desc": "Aplikasi mobile inovatif dengan teknologi OCR (Optical Character Recognition) untuk ekstraksi informasi nutrisi dari kemasan makanan.",
+                "proj.p5Title": "Network Monitoring & IT Infrastructure PNUP",
+                "proj.p5Desc": "Sistem pemantauan jaringan antar gedung dan manajemen operasional IT Support Data Center kampus PNUP.",
+                "proj.p6Title": "Bootcamp Platform HIMATIK 2025",
+                "proj.p6Desc": "Sistem materi dan manajemen pelatihan Web Development & Graphic Design bagi 49 mahasiswa peserta bootcamp.",
+                "proj.readMore": "Buka Halaman Detail",
+
+                "contact.tag": "Mari Berkolaborasi",
+                "contact.title": "Tertarik bekerjasama atau merekrut saya?",
+                "contact.subtitle": "Saya berdomisili di Makassar, Sulawesi Selatan dan terbuka untuk posisi Web Developer, Software Engineer, Cloud Associate, maupun kesempatan karir teknologi lainnya.",
+                "contact.chatWa": "Pesan WhatsApp",
+                "contact.copyMail": "Salin Email",
+
+                "detailPage.back": "Kembali ke Portofolio",
+                "detailPage.overview": "Ringkasan & Deskripsi Proyek",
+                "detailPage.features": "Solusi & Pencapaian Utama",
+                "detailPage.gallery": "Galeri Antarmuka / Tampilan Proyek",
+                "detailPage.stack": "Tech Stack",
+                "detailPage.role": "Peran & Tanggung Jawab",
+                "detailPage.visit": "Kunjungi Tautan Proyek"
+            },
+            en: {
+                "toast.copy": "Email address (ekatrisna@gmail.com) copied!",
+                "nav.about": "About",
+                "nav.skills": "Skills",
+                "nav.experience": "Experience",
+                "nav.awards": "Awards",
+                "nav.organization": "Organization",
+                "nav.education": "Education",
+                "nav.certifications": "Certifications",
+                "nav.projects": "Projects",
+                "nav.contact": "Contact",
+
+                "hero.status": "Available For Internships / Career Roles",
+                "hero.title": "Building modern & reliable <span class=\"text-rosebrand-600 dark:text-rosebrand-400\">web & cloud applications.</span>",
+                "hero.description": "Hi! I'm <strong class=\"text-slate-950 dark:text-white font-bold\">Adinda Khusnul Khotimah</strong>, an Applied Bachelor graduate in Informatics and Computer Engineering (PNUP). Experienced in dynamic web application development using React, TypeScript, Directus CMS, RESTful API integration, and Cloud Computing (GCP).",
+                "hero.ctaPrimary": "Explore My Work",
+                "hero.ctaSecondary": "Get In Touch",
+                "hero.expYears": "GPA",
+
+                "skills.tag": "Specialization",
+                "skills.title": "Skills & Technical Stack",
+                "skills.subtitle": "Technologies, programming languages, and engineering tools applied across real-world projects.",
+                "skills.feDesc": "Building responsive dynamic web interfaces and mobile applications.",
+                "skills.beDesc": "Decoupled architecture, RESTful API consumption, and headless CMS.",
+                "skills.devopsDesc": "Cloud deployment, server monitoring, and Git-based workflows.",
+
+                "exp.tag": "Practical Background",
+                "exp.title": "Work Experience & Training Programs",
+                "exp.job0Desc": "Participated in digital talent training and hackathon focused on Public Service Acceleration and Digital Creative Economy. Developed technology-driven solutions supporting public service digitalization and Indonesia's digital economic competitiveness.",
+                "exp.job1Desc": "Developed and deployed approx. 15 dynamic website profiles for academic programs and campus organizational units using React, TypeScript, and Directus CMS. Integrated frontend with RESTful APIs using decoupled architecture for improved maintainability and security.",
+                "exp.job2Desc": "Monitored inter-building network infrastructure using monitoring tools to ensure stable connectivity. Supported LAN, fiber optic, hardware, and Data Center operational troubleshooting.",
+                "exp.job3Desc": "Led a cross-functional Capstone team (Project Leader). Architected Google Cloud Platform backend services (Cloud Storage, Cloud Run, Firestore), directed API deployment, published technical documentation, and delivered final Go-To-Market proposals.",
+
+                "awards.tag": "Competitions & Honors",
+                "awards.title": "Achievements & Photos",
+                "awards.subtitle": "National awards and competition milestones achieved.",
+                "awards.a1Title": "Finalist Top 10 Hackathon Permikomnas 2025",
+                "awards.a1Desc": "Served as Mobile Frontend Developer using Kotlin to build 'SADAR' (Emergency Access and Digital Health Response System) to accelerate national emergency healthcare access.",
+                "awards.a2Title": "DIGDAYA X Hackathon Innovation",
+                "awards.a2Desc": "Digital talent program and national hackathon focused on public service digitalization, tourism, and digital creative economy competitiveness.",
+                "awards.docTitle": "Event Photo Documentation",
+
+                "org.tag": "Leadership & Community",
+                "org.title": "Organization Experience",
+                "org.role1": "Head of Education Department",
+                "org.desc1": "Led Education Department in executing competency programs, including 'Bootcamp HIMATIK 2025' (49 participants, 30+ Web Dev & Graphic Design sessions), mentorship, and AI technology seminars.",
+                "org.role2": "Capstone Project Team Leader",
+                "org.desc2": "Directed cross-functional team (ML, Mobile, Cloud) to build hazardous skincare ingredient detection aligned with BPOM regulations from research to final Go-To-Market pitch.",
+
+                "edu.tag": "Academic Background",
+                "edu.title": "Education",
+                "edu.degree": "Bachelor of Applied Science (B.A.Sc) - Informatics & Computer Engineering",
+                "edu.details": "GPA 3.79 / 4.00",
+
+                "cert.tag": "Official Credentials",
+                "cert.title": "Certifications & Licensures",
+
+                "proj.tag": "Featured Work",
+                "proj.title": "Featured Projects",
+                "proj.subtitle": "Click any project card to view dedicated case studies, tech architectures, and UI galleries.",
+                "proj.p1Title": "15 PNUP Campus Program Websites",
+                "proj.p1Desc": "Developed & deployed 15 academic program web profiles using React, TypeScript, and Directus CMS with decoupled REST APIs.",
+                "proj.p2Title": "Skincare Ingredient Safety Detector",
+                "proj.p2Desc": "Distributed GCP cloud backend architecture (Cloud Run, Storage, Firestore) for BPOM regulation and cosmetic analysis.",
+                "proj.p3Title": "SADAR - Emergency Health Mobile App",
+                "proj.p3Desc": "Kotlin mobile app for national emergency health response. Awarded Top 10 Finalist in National Hackathon Permikomnas 2025.",
+                "proj.p4Title": "Nutrisia - Healthy, Ideal, and Accurate Nutrition Tracker",
+                "proj.p4Desc": "Innovative mobile app using Optical Character Recognition (OCR) technology to extract nutrition labels and track intake in real-time.",
+                "proj.p5Title": "PNUP Network Monitoring & IT Infrastructure",
+                "proj.p5Desc": "Inter-building network monitoring system and Data Center IT support operations management.",
+                "proj.p6Title": "HIMATIK 2025 Bootcamp Portal",
+                "proj.p6Desc": "Learning materials and management platform for 49 student participants in Web Development & Graphic Design.",
+                "proj.readMore": "View Full Case Study",
+
+                "contact.tag": "Let's Collaborate",
+                "contact.title": "Interested in hiring or working with me?",
+                "contact.subtitle": "Based in Makassar, South Sulawesi, Indonesia. Open for Web Developer, Software Engineer, Cloud Associate, and technical roles.",
+                "contact.chatWa": "WhatsApp Direct",
+                "contact.copyMail": "Copy Email",
+
+                "detailPage.back": "Back to Portfolio",
+                "detailPage.overview": "Overview & Project Description",
+                "detailPage.features": "Key Solutions & Milestones",
+                "detailPage.gallery": "UI Screenshot Gallery",
+                "detailPage.stack": "Tech Stack",
+                "detailPage.role": "Role & Responsibility",
+                "detailPage.visit": "Visit Project Link"
+            }
+        };
+
+        const langToggleBtn = document.getElementById('langToggle');
+        const langText = document.getElementById('langText');
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            langText.textContent = lang === 'en' ? 'ID' : 'EN';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        // Initialize language to English on load
+        updateLanguage('en');
+
+        langToggleBtn.addEventListener('click', () => {
+            const newLang = currentLang === 'en' ? 'id' : 'en';
+            updateLanguage(newLang);
+        });
+
+        // Theme Toggle System
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Mobile Navigation Drawer Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Projects Data matching Adinda's CV
+        const projectsData = {
+            1: {
+                category: "Web CMS / Academic",
+                title: { id: "15 Website Profil Program Studi & Unit PNUP", en: "15 PNUP Academic Program & Unit Websites" },
+                subtitle: { id: "Pengembangan dan peluncuran 15 situs web profil akademik menggunakan React, TypeScript, dan Directus CMS.", en: "Development and deployment of 15 academic profile websites using React, TypeScript, and Directus CMS." },
+                mainImg: "project1-webprofil.png",
+                overview: {
+                    id: "Di Politeknik Negeri Ujung Pandang, saya merancang serta merilis sekitar 15 situs web profil untuk berbagai jurusan dan unit organisasi kampus. Proyek ini mengadopsi arsitektur terpisah (decoupled architecture) dengan frontend React & TypeScript serta backend Directus CMS untuk menjamin pengelolaan konten yang dinamis, performa responsif, dan keamanan terjamin.",
+                    en: "At Politeknik Negeri Ujung Pandang, I developed and deployed approximately 15 web profiles for academic departments and organizational units. The project utilizes a decoupled architecture using React & TypeScript on the frontend and Directus CMS on the backend for dynamic, secure content management."
+                },
+                features: [
+                    { id: "Mengembangkan ~15 website profil kampus dinamis dengan React & TypeScript.", en: "Developed ~15 dynamic campus web profiles using React & TypeScript." },
+                    { id: "Menerapkan Directus CMS berbasis RESTful API untuk pembaruan konten mandiri oleh admin prodi.", en: "Implemented Directus CMS with RESTful APIs for independent content updates by department admins." },
+                    { id: "Arsitektur decoupled frontend-backend yang meningkatkan keamanan dan kemudahan maintenance.", en: "Decoupled architecture improving security and system maintainability." }
+                ],
+                gallery: [
+                    "project1-post.png",
+                    "project1-doc.png",
+                    "project1-cms-webprofil.png"
+                ],
+                tech: ["React", "TypeScript", "Directus CMS", "RESTful API", "Tailwind CSS", "Nginx"],
+                role: "Web Developer Intern (PNUP)",
+                demoUrl: "https://www.te.poliupg.ac.id"
+            },
+            2: {
+                category: "Cloud Computing",
+                title: { id: "Skincare Ingredient & BPOM Checker Cloud Backend", en: "Skincare Ingredient & BPOM Checker Cloud Backend" },
+                subtitle: { id: "Arsitektur backend cloud terdistribusi untuk analisis bahan kosmetik berbahaya pada Bangkit Capstone.", en: "Distributed cloud backend architecture for skincare safety analysis in Bangkit Capstone Project." },
+                mainImg: "project2-scancare.png",
+                overview: {
+                    id: "Sebagai Ketua Tim Capstone Bangkit Academy, saya mengarahkan pembuatan aplikasi pemindai kandungan kosmetik berbahaya berbasis aturan BPOM. Saya memimpin perancangan backend berbasis Google Cloud Platform (GCP) yang mengintegrasikan Cloud Storage, Cloud Run, dan Firestore DB untuk mengolah data kueri produk secara otomatis.",
+                    en: "As Capstone Team Leader in Bangkit Academy, I directed the development of a hazardous cosmetic ingredient scanner aligned with BPOM regulations. Architected Google Cloud Platform (GCP) infrastructure utilizing Cloud Storage, Cloud Run, and Firestore for scalable data serving."
+                },
+                features: [
+                    { id: "Penyusunan arsitektur cloud menggunakan Cloud Storage, Cloud Run, dan Firestore.", en: "Architected GCP cloud infrastructure with Cloud Storage, Cloud Run, and Firestore." },
+                    { id: "Pengembangan dan deployment RESTful API terdokumentasi lengkap untuk integrasi ke aplikasi mobile.", en: "Developed & deployed documented RESTful APIs for seamless mobile integration." },
+                    { id: "Penyusunan proposal strategi Go-To-Market & pembuatan video presentasi proyek akhir.", en: "Authored Go-To-Market strategy proposals and capstone presentation showcases." }
+                ],
+                gallery: [
+                    "project2-scancare.png",
+                    "project2-scancare2.png",
+                     "project2-arsitektur.png"
+                ],
+                tech: ["Google Cloud Platform", "Cloud Run", "Cloud Storage", "Firestore", "RESTful API", "Python"],
+                role: "Capstone Team Leader & Cloud Architect",
+                demoUrl: "https://github.com/ScanCare-Team"
+            },
+            3: {
+                category: "Android / Mobile",
+                title: { id: "SADAR - Sistem Akses Darurat & Respon Kesehatan", en: "SADAR - Emergency Health Mobile Access App" },
+                subtitle: { id: "Aplikasi mobile penanganan darurat kesehatan - Top 10 Finalis Hackathon Permikomnas 2025.", en: "Emergency healthcare mobile app - Top 10 Finalist in National Hackathon Permikomnas 2025." },
+                mainImg: "project3-sadar.png",
+                overview: {
+                    id: "SADAR adalah solusi mobile Android yang dikembangkan untuk mempercepat pengiriman bantuan dan respon layanan kesehatan darurat di Indonesia. Dalam kompetisi Hackathon Permikomnas 2025, saya bertindak sebagai Mobile Frontend Developer yang merancang antarmuka Kotlin yang cepat, intuitif, serta dapat diakses dalam situasi kritis.",
+                    en: "SADAR is an Android mobile app designed to accelerate emergency healthcare response in Indonesia. Developed during Hackathon Permikomnas 2025, I served as Mobile Frontend Developer building an intuitive Kotlin interface suitable for critical situations."
+                },
+                features: [
+                    { id: "Meraih penghargaan Top 10 Finalist pada Hackathon Nasional Permikomnas 2025.", en: "Awarded Top 10 Finalist in National Hackathon Permikomnas 2025." },
+                    { id: "Pengembangan antarmuka mobile Kotlin responsif dengan navigasi ramah pengguna.", en: "Developed responsive Kotlin mobile interfaces with user-friendly emergency workflows." },
+                    { id: "Integrasi layanan pemetaan lokasi darurat & tombol bantuan medis instan.", en: "Emergency location mapping and instant medical dispatch button integration." }
+                ],
+                gallery: [
+                    "project3-sadar.png",
+                    "project3-order.png",
+                    "project3-rute.png"
+                ],
+                tech: ["Kotlin", "Android Studio", "RESTful API", "Google Maps API", "Git"],
+                role: "Mobile Frontend Developer",
+                demoUrl: "https://canva.link/y2rj4p950h6u2f0"
+            },
+            4: {
+                category: "Mobile / AI & OCR",
+                title: { id: "Nutrisia - Nutrisi Terpantau Sehat Ideal dan Akurat", en: "Nutrisia - Healthy, Ideal, and Accurate Nutrition Tracker" },
+                subtitle: { id: "Aplikasi mobile pelacak nutrisi berbasis teknologi OCR untuk pemindaian label makanan dan pencegahan obesitas.", en: "Mobile nutrition tracking app powered by OCR technology for food label extraction and obesity prevention." },
+                mainImg: "project4-nutrisia.png",
+                overview: {
+                    id: "Nutrisia adalah aplikasi mobile inovatif yang menggabungkan teknologi Optical Character Recognition (OCR) dengan pelacakan nutrisi harian. Pengguna dapat memindai label kemasan makanan untuk mengekstrak dan menampilkan informasi nilai gizi secara instan. Sebagai Backend Developer, saya bertanggung jawab penuh membangun fungsionalitas pemrosesan OCR, kalkulasi kalori real-time, serta arsitektur backend yang akurat.",
+                    en: "Nutrisia is an innovative mobile app combining Optical Character Recognition (OCR) technology with daily nutrition tracking. Users scan food packaging labels to extract and display nutritional data instantly. As Backend Developer, I implemented OCR functionality, ensuring accurate, real-time nutritional extraction and meal analysis."
+                },
+                features: [
+                    { id: "Integrasi OCR canggih untuk ekstrak data nutrisi dari kemasan makanan secara otomatis.", en: "Advanced OCR integration to automatically extract nutritional data from food packaging." },
+                    { id: "Rekomendasi kebutuhan kalori harian yang disesuaikan untuk mendukung gaya hidup sehat & pencegahan obesitas.", en: "Tailored daily caloric recommendations supporting healthier eating habits and obesity prevention." },
+                    { id: "Analisis dan wawasan nilai gizi real-time untuk pemantauan asupan makanan efisien.", en: "Real-time insights on calorie and nutrient content for efficient intake tracking." },
+                    { id: "Antarmuka intuitif dan ramah pengguna yang memudahkan navigasi pencatatan nutrisi harian.", en: "User-friendly interface designed for seamless daily nutrition tracking." }
+                ],
+                gallery: [
+                    "project4-nutrisia.png",
+                    "project4-dashboard.png",
+                    "project4-scanner.png"
+                ],
+                tech: ["Kotlin / Android", "OCR Technology", "Backend API", "RESTful API"],
+                role: "Backend Developer",
+                demoUrl: "https://www.youtube.com/watch?v=jGKfVx5dJ1E"
+            },
+            5: {
+                category: "IT Support & Networking",
+                title: { id: "Monitoring Jaringan Inter-Building & Infrastructure PNUP", en: "PNUP Inter-Building Network Monitoring & IT Infrastructure" },
+                subtitle: { id: "Operasional pemantauan konektivitas jaringan dan IT support Data Center kampus PNUP.", en: "Campus inter-building network monitoring and Data Center IT operations support." },
+                mainImg: "https://placehold.co/1200x700/831843/ffffff?text=PNUP+Data+Center+Operations",
+                overview: {
+                    id: "Selama menjalani magang sebagai Junior IT Support di Politeknik Negeri Ujung Pandang, saya bertanggung jawab memantau kestabilan jaringan antar gedung kampus serta menyelesaikan masalah infrastruktur LAN, serat optik (Fiber Optic), dan perangkat keras pendukung Data Center.",
+                    en: "During my Junior IT Support Internship at Politeknik Negeri Ujung Pandang, I monitored campus-wide network stability across buildings and assisted in troubleshooting LAN, fiber optics, hardware, and Data Center operations."
+                },
+                features: [
+                    { id: "Pemantauan rutin konektivitas jaringan kampus dengan tools network monitoring.", en: "Routine campus network monitoring using specialized network tools." },
+                    { id: "Troubleshooting cepat masalah LAN, Fiber Optic, dan jaringan perangkat keras.", en: "Prompt troubleshooting of LAN, Fiber Optic, and hardware connectivity issues." }
+                ],
+                gallery: [
+                    "https://placehold.co/800x500/831843/ffffff?text=Network+Monitoring+Dashboard",
+                    "https://placehold.co/800x500/701a75/ffffff?text=Data+Center+Rack+Server"
+                ],
+                tech: ["Network Monitoring Tools", "LAN", "Fiber Optic", "Hardware Troubleshooting"],
+                role: "Junior IT Support Intern (PNUP)",
+                demoUrl: "https://www.poliupg.ac.id"
+            },
+            6: {
+                category: "Education & Leadership",
+                title: { id: "Bootcamp HIMATIK 2025 & Tech Training Portal", en: "HIMATIK 2025 Bootcamp & Tech Training Portal" },
+                subtitle: { id: "Program pengembangan kompetensi 49 mahasiswa di bidang Web Development & Design.", en: "Student talent development program serving 49 participants across Web Dev & Design." },
+                mainImg: "https://placehold.co/1200x700/500724/ffffff?text=HIMATIK+Bootcamp+2025",
+                overview: {
+                    id: "Sebagai Ketua Departemen Pendidikan HIMATIK PNUP, saya merancang dan mengeksekusi 'Bootcamp HIMATIK 2025' dengan 30+ sesi pelatihan intensif Web Development dan Graphic Design untuk 49 peserta, dilengkapi program pendampingan lomba dan seminar AI.",
+                    en: "As Head of Education Department at HIMATIK PNUP, I spearheaded 'Bootcamp HIMATIK 2025' delivering 30+ intensive sessions covering Web Development and Graphic Design for 49 student participants."
+                },
+                features: [
+                    { id: "Mengelola 30+ sesi pelatihan Web Development dan Graphic Design.", en: "Managed 30+ Web Development and Graphic Design training sessions." },
+                    { id: "Meningkatkan literasi teknologi dan kesiapan industri 49 mahasiswa peserta.", en: "Enhanced tech literacy and industry readiness for 49 participating students." }
+                ],
+                gallery: [
+                    "https://placehold.co/800x500/500724/ffffff?text=Bootcamp+Training+Session",
+                    "https://placehold.co/800x500/831843/ffffff?text=Student+Project+Showcase"
+                ],
+                tech: ["Web Development", "Graphic Design", "Leadership", "Event Management"],
+                role: "Head of Education Department (HIMATIK)",
+                demoUrl: "https://www.poliupg.ac.id"
+            }
+        };
+
+        // Dedicated Full Page Project Detail Functions
+        function openProjectDetail(id) {
+            const project = projectsData[id];
+            if (!project) return;
+
+            document.getElementById('detailCategoryBadge').textContent = project.category;
+            document.getElementById('detailTitle').textContent = project.title[currentLang] || project.title.id;
+            document.getElementById('detailSubtitle').textContent = project.subtitle[currentLang] || project.subtitle.id;
+            document.getElementById('detailMainImage').src = project.mainImg;
+            document.getElementById('detailOverviewText').textContent = project.overview[currentLang] || project.overview.id;
+            document.getElementById('detailRoleText').textContent = project.role;
+
+            document.getElementById('detailLiveBtn').href = project.demoUrl;
+
+            // Features List
+            const featuresList = document.getElementById('detailFeaturesList');
+            featuresList.innerHTML = '';
+            project.features.forEach(item => {
+                const li = document.createElement('li');
+                li.className = "flex items-start gap-3";
+                li.innerHTML = `<i data-feather="check" class="w-5 h-5 text-rosebrand-600 dark:text-rosebrand-400 shrink-0 mt-0.5"></i><span>${item[currentLang] || item.id}</span>`;
+                featuresList.appendChild(li);
+            });
+
+            // Gallery Grid
+            const galleryGrid = document.getElementById('detailGalleryGrid');
+            galleryGrid.innerHTML = '';
+            project.gallery.forEach(imgUrl => {
+                const imgEl = document.createElement('img');
+                imgEl.src = imgUrl;
+                imgEl.alt = "Screenshot";
+                imgEl.className = "w-full h-36 object-cover rounded-2xl border border-rosebrand-200 dark:border-slate-800 cursor-pointer hover:scale-105 transition-transform shadow-sm";
+                imgEl.onclick = () => {
+                    document.getElementById('detailMainImage').src = imgUrl;
+                };
+                galleryGrid.appendChild(imgEl);
+            });
+
+            // Tech Stack Badges
+            const techBadges = document.getElementById('detailTechBadges');
+            techBadges.innerHTML = '';
+            project.tech.forEach(t => {
+                const span = document.createElement('span');
+                span.className = "px-3.5 py-1.5 rounded-xl bg-rosebrand-100 dark:bg-rosebrand-950 text-rosebrand-900 dark:text-rosebrand-300 text-xs font-bold border border-rosebrand-200 dark:border-rosebrand-900 shadow-sm";
+                span.textContent = t;
+                techBadges.appendChild(span);
+            });
+
+            feather.replace();
+
+            // Switch View
+            document.getElementById('mainPortfolioView').classList.add('hidden');
+            document.getElementById('projectDetailView').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function closeProjectDetail() {
+            document.getElementById('projectDetailView').classList.add('hidden');
+            document.getElementById('mainPortfolioView').classList.remove('hidden');
+        }
+
+        // Award Documentation Photo Preview Modal
+        function openDocPreview(imgUrl, title) {
+            document.getElementById('docModalImg').src = imgUrl;
+            document.getElementById('docModalTitle').textContent = title;
+            document.getElementById('docPreviewModal').classList.remove('hidden');
+        }
+
+        function closeDocPreview() {
+            document.getElementById('docPreviewModal').classList.add('hidden');
+        }
+
+        document.getElementById('docPreviewModal').addEventListener('click', (e) => {
+            if (e.target.id === 'docPreviewModal') closeDocPreview();
+        });
+
+        // ESC Key listener to exit detail views
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeProjectDetail();
+                closeDocPreview();
+            }
+        });
+
+        // Copy Email Function
+        function copyEmailToClipboard() {
+            const email = "ekatrisna@gmail.com";
+            const input = document.createElement("input");
+            input.value = email;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand("copy");
+            document.body.removeChild(input);
+
+            const toast = document.getElementById("copyToast");
+            toast.classList.remove("hidden");
+            setTimeout(() => {
+                toast.classList.add("hidden");
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
